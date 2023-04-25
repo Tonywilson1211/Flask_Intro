@@ -11,7 +11,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 # The first argument of the Flask class, is the name of the application's module - our package.
 # Since we're just using a single module, we can use __name__ which is a built-in Python variable.
 # Flask needs this so that it knows where to look for templates and static files.
-# nothing to see here
+
 
 
 @app.route("/") #  decorator starts with @ or pie notation.

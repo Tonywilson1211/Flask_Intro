@@ -1,10 +1,12 @@
 import os
 import json
 # import flask class - capital letter indicates a class and is important to remember
-from flask import Flask, render_template
-
+from flask import Flask, render_template, request, flash
+if os.path.exists("env.py"):
+    import env
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("SECRET_KEY")
 # create instance and store in variable called app.
 # The first argument of the Flask class, is the name of the application's module - our package.
 # Since we're just using a single module, we can use __name__ which is a built-in Python variable.
@@ -33,8 +35,10 @@ def about_member(member_name):
     return render_template("member.html", member=member)
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    print(request.form.get("name"))
+    print(request.form.get("email"))
     return render_template("contact.html", page_title="Contact")
 
 
